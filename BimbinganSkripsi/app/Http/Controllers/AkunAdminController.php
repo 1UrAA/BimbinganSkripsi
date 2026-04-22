@@ -46,6 +46,3 @@ class AkunAdminController extends Controller
         return back();
     }
 }
-
-
-//eja jomok
