@@ -1,0 +1,39 @@
+==================================================
+DAFTAR AKUN TESTING APLIKASI BIMBINGAN SKRIPSI
+==================================================
+
+Catatan: Aplikasi ini mensyaratkan pendaftaran Mahasiswa & Dosen dilakukan lewat halaman Register atau dikelola oleh Admin. Oleh karena itu, *Database* utama hanya dibekali dengan pintu masuk bagi Pengelola (Admin/Superadmin).
+
+Berikut adalah akun sakti (Admin & Superadmin) yang otomatis tersedia di Database saat ini:
+
+--------------------------------------------------
+1. AKUN SUPERADMIN (Akses Tertinggi Lintas Prodi)
+--------------------------------------------------
+Email    : superadmin@contoh.com
+Password : password
+
+--------------------------------------------------
+2. AKUN ADMIN PRODI (Pengelola Jadwal Prodi SI)
+--------------------------------------------------
+Email    : admin@si.contoh.com
+Password : password
+
+
+==================================================
+CARA MENGETES ALUR MAHASISWA & DOSEN (WAJIB COBA):
+==================================================
+Karena *database* baru saja dibangun ulang (Fresh Seed), Anda perlu mendaftarkan Dosen dan Mahasiswa baru dengan cara:
+
+1. Buka halaman Pendaftaran: http://localhost:8000/register
+2. Daftar sebagai Dosen (Pilih Role Dosen). Contoh:
+   - Email: dosen1@contoh.com
+   - Pass: password
+3. Daftar satu Dosen lagi. Contoh:
+   - Email: dosen2@contoh.com
+   - Pass: password
+4. Daftar sebagai Mahasiswa. Contoh:
+   - Email: mhs@contoh.com
+   - Pass: password
+5. Buka Akun Admin (admin@si.contoh.com) untuk *APPROVE* pendaftaran Dosen dan menetapkan Dosen P1/P2 kepada Mahasiswa tersebut.
+
+Setelah langkah di atas dilakukan, Anda bisa langsung menikmati serunya memainkan Kunci Otorisasi antara Dosen & Mahasiswa yang baru kita buat!
