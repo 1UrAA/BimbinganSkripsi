@@ -18,6 +18,9 @@ Route::middleware(['auth'])->group(function(){
 
     Route::middleware(['role:mahasiswa,dosen'])->group(function () {
         Route::get('/skripsi', [\App\Http\Controllers\SkripsiController::class, 'index'])->name('skripsi.index');
+        Route::get('/skripsi/proposal/{id}', [\App\Http\Controllers\SkripsiController::class, 'downloadProposal'])->name('skripsi.proposal');
+        Route::post('/skripsi/ajukan-p1', [\App\Http\Controllers\SkripsiController::class, 'ajukanP1'])->name('skripsi.ajukanP1');
+        Route::post('/skripsi/respon-p1/{id}', [\App\Http\Controllers\SkripsiController::class, 'responP1'])->name('skripsi.responP1');
         Route::post('/skripsi/ajukan-p2', [\App\Http\Controllers\SkripsiController::class, 'ajukanP2'])->name('skripsi.ajukanP2');
         Route::post('/skripsi/respon-p2/{id}', [\App\Http\Controllers\SkripsiController::class, 'responP2'])->name('skripsi.responP2');
         
