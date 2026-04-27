@@ -11,6 +11,7 @@ class Bimbingan extends Model
         'dosen_id',
         'tipe_bimbingan',
         'file',
+        'file_koreksi',
         'komentar',
         'status'
     ];

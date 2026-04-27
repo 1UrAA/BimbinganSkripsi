@@ -30,6 +30,9 @@
                     <x-nav-link :href="route('dosen.index')" :active="request()->routeIs('dosen.*')">
                         Dosen
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.progress.index')" :active="request()->routeIs('admin.progress.*')">
+                        Progress Mahasiswa
+                    </x-nav-link>
                     @endif
                     @if(Auth::user() && Auth::user()->role === 'superadmin')
                     <x-nav-link :href="route('prodi.index')" :active="request()->routeIs('prodi.*')">
@@ -108,6 +111,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('dosen.index')" :active="request()->routeIs('dosen.*')">
                 Dosen
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.progress.index')" :active="request()->routeIs('admin.progress.*')">
+                Progress Mahasiswa
             </x-responsive-nav-link>
             @endif
             @if(Auth::user() && Auth::user()->role === 'superadmin')

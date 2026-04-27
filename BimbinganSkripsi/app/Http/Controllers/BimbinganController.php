@@ -92,6 +92,28 @@ class BimbinganController extends Controller
         return back()->with('success', 'Review berhasil disimpan.');
     }
 
+    // Dosen Upload File Koreksi (file yang sudah dicoret/direvisi)
+    public function uploadKoreksi(Request $request, $id)
+    {
+        $user = Auth::user();
+        if ($user->role !== 'dosen') abort(403);
+
+        $bimbingan = Bimbingan::findOrFail($id);
+        if ($bimbingan->dosen_id != $user->dosen->id) abort(403);
+
+        $request->validate([
+            'file_koreksi' => 'required|mimes:pdf,doc,docx|max:10000'
+        ]);
+
+        $file     = $request->file('file_koreksi');
+        $namaFile = time().'_KOREKSI_'.$bimbingan->mahasiswa->nim.'.'.$file->getClientOriginalExtension();
+        $file->move(public_path('uploads'), $namaFile);
+
+        $bimbingan->update(['file_koreksi' => $namaFile]);
+
+        return back()->with('success', 'File koreksi berhasil diupload dan dikirim ke mahasiswa.');
+    }
+
     // Dosen Memberikan ACC Pintu Kelayakan Ujian
     public function accUjian(Request $request, $skripsi_id)
     {

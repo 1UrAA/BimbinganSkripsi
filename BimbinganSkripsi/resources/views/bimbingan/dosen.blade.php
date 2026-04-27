@@ -35,6 +35,7 @@
                                     <th class="px-6 py-3 text-left font-bold text-blue-800 text-sm">Mahasiswa Pengirim</th>
                                     <th class="px-6 py-3 text-left font-bold text-blue-800 text-sm">Posisi Anda</th>
                                     <th class="px-6 py-3 text-left font-bold text-blue-800 text-sm">Dokumen File</th>
+                                    <th class="px-6 py-3 text-left font-bold text-blue-800 text-sm">Upload Koreksi ke Mahasiswa</th>
                                     <th class="px-6 py-3 text-left font-bold text-blue-800 text-sm">Berikan Feedback / Status</th>
                                 </tr>
                             </thead>
@@ -55,6 +56,23 @@
                                         <a href="{{ asset('uploads/' . $b->file) }}" target="_blank" class="text-white bg-indigo-500 px-4 py-2 rounded-md hover:bg-indigo-600 underline-none inline-flex items-center text-sm font-bold shadow-sm transition">
                                             <i class="fas fa-file-pdf mr-2"></i> Buka Draft
                                         </a>
+                                    </td>
+                                    {{-- Kolom Upload Koreksi --}}
+                                    <td class="px-6 py-4 border-r">
+                                        @if($b->file_koreksi)
+                                            <div class="mb-2">
+                                                <span class="text-xs text-green-600 font-bold"><i class="fas fa-check-circle mr-1"></i>File koreksi sudah dikirim</span><br>
+                                                <a href="{{ asset('uploads/' . $b->file_koreksi) }}" target="_blank" class="text-indigo-600 text-xs underline">Lihat file koreksi</a>
+                                            </div>
+                                        @endif
+                                        <form action="{{ route('bimbingan.uploadKoreksi', $b->id) }}" method="POST" enctype="multipart/form-data" class="space-y-2">
+                                            @csrf
+                                            <label class="text-xs text-gray-500 font-semibold block">{{ $b->file_koreksi ? 'Perbarui File Koreksi:' : 'Upload File Koreksi:' }}</label>
+                                            <input type="file" name="file_koreksi" accept=".pdf,.doc,.docx" class="block w-full text-xs text-gray-700 border border-gray-300 rounded cursor-pointer bg-gray-50">
+                                            <button type="submit" class="w-full bg-orange-500 text-white px-3 py-1.5 rounded-md hover:bg-orange-600 text-xs font-bold shadow-sm transition">
+                                                <i class="fas fa-upload mr-1"></i> Kirim Koreksi ke Mahasiswa
+                                            </button>
+                                        </form>
                                     </td>
                                     <td class="px-6 py-4">
                                         <form action="{{ route('bimbingan.review', $b->id) }}" method="POST" class="space-y-3">

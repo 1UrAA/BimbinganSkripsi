@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/bimbingan', [\App\Http\Controllers\BimbinganController::class, 'index'])->name('bimbingan.index');
         Route::post('/bimbingan', [\App\Http\Controllers\BimbinganController::class, 'store'])->name('bimbingan.store');
         Route::post('/bimbingan/{id}/review', [\App\Http\Controllers\BimbinganController::class, 'review'])->name('bimbingan.review');
+        Route::post('/bimbingan/{id}/upload-koreksi', [\App\Http\Controllers\BimbinganController::class, 'uploadKoreksi'])->name('bimbingan.uploadKoreksi');
         Route::post('/bimbingan/acc/{skripsi_id}', [\App\Http\Controllers\BimbinganController::class, 'accUjian'])->name('bimbingan.acc');
         
         // Sidang Mahasiswa & Dosen
@@ -43,6 +44,10 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/admin/sidang', [\App\Http\Controllers\SidangController::class, 'index'])->name('admin.sidang.index');
         Route::post('/admin/sidang/ruangan', [\App\Http\Controllers\SidangController::class, 'storeRuangan'])->name('admin.sidang.ruangan');
         Route::post('/admin/sidang/{id}/jadwal', [\App\Http\Controllers\SidangController::class, 'jadwalkanSidang'])->name('admin.sidang.jadwal');
+
+        // Progress Mahasiswa (Read-only)
+        Route::get('/admin/progress', [\App\Http\Controllers\AdminProgressController::class, 'index'])->name('admin.progress.index');
+        Route::get('/admin/progress/{id}', [\App\Http\Controllers\AdminProgressController::class, 'detail'])->name('admin.progress.detail');
     });
 
     Route::middleware(['role:superadmin'])->group(function () {

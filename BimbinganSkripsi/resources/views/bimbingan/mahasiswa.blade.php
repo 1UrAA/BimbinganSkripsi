@@ -58,6 +58,7 @@
                                 <th class="px-6 py-3 text-left font-bold">Waktu</th>
                                 <th class="px-6 py-3 text-left font-bold">Tujuan (Dosen)</th>
                                 <th class="px-6 py-3 text-left font-bold">File Dokumen</th>
+                                <th class="px-6 py-3 text-left font-bold">File Koreksi Dosen</th>
                                 <th class="px-6 py-3 text-left font-bold">Status</th>
                                 <th class="px-6 py-3 text-left font-bold">Komentar Dosen</th>
                             </tr>
@@ -77,6 +78,16 @@
                                     <a href="{{ asset('uploads/' . $b->file) }}" target="_blank" class="text-indigo-600 hover:text-indigo-900 underline flex items-center font-bold">
                                         Unduh Dokumen
                                     </a>
+                                </td>
+                                <td class="px-6 py-4 border-l">
+                                    @if($b->file_koreksi)
+                                        <a href="{{ asset('uploads/' . $b->file_koreksi) }}" target="_blank"
+                                           class="inline-flex items-center bg-orange-100 text-orange-700 border border-orange-300 px-3 py-1.5 rounded-md text-sm font-bold hover:bg-orange-200 transition">
+                                            <i class="fas fa-file-alt mr-2"></i> Unduh Koreksi Dosen
+                                        </a>
+                                    @else
+                                        <span class="text-xs text-gray-400 italic">Belum ada koreksi</span>
+                                    @endif
                                 </td>
                                 <td class="px-6 py-4 border-l">
                                     @if($b->status === 'menunggu')
